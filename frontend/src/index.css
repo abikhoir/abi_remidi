@@ -1,0 +1,147 @@
+/* src/index.css - Updated with retro theme */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Import retro fonts */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap');
+
+/* Custom scrollbar with retro feel */
+::-webkit-scrollbar {
+  width: 12px;
+  background: #000;
+}
+
+::-webkit-scrollbar-track {
+  background: #000;
+  border: 2px solid #fff;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #ff00ff, #00ffff);
+  border-radius: 0;
+  border: 2px solid #fff;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, #00ffff, #ff00ff);
+}
+
+/* Dark mode variables - adapted for retro neon */
+:root {
+  --bg-color: #000; /* Black background for retro CRT feel */
+  --text-color: #00ff00; /* Green terminal text */
+  --accent-color: #ff00ff; /* Magenta neon */
+  --secondary-color: #00ffff; /* Cyan neon */
+  --font-retro: 'Press Start 2P', cursive;
+  --font-mono: 'VT323', monospace;
+  --scrollbar-track: #000;
+  --scrollbar-thumb: #ff00ff;
+  --scrollbar-thumb-hover: #00ffff;
+}
+
+.dark {
+  --bg-color: #111;
+  --text-color: #0f0;
+  --accent-color: #f0f;
+  --secondary-color: #0ff;
+  --scrollbar-track: #222;
+  --scrollbar-thumb: #f0f;
+  --scrollbar-thumb-hover: #0ff;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+}
+
+/* Retro effects */
+.retro-filter {
+  filter: contrast(1.5) brightness(1.2) saturate(1.5);
+  image-rendering: pixelated;
+}
+
+.retro-button {
+  border: 2px solid var(--accent-color);
+  box-shadow: 0 0 10px var(--accent-color), inset 0 0 5px var(--secondary-color);
+  text-shadow: 0 0 5px var(--text-color);
+  transition: all 0.3s ease;
+}
+
+.retro-button:hover {
+  box-shadow: 0 0 20px var(--accent-color), inset 0 0 10px var(--secondary-color);
+  animation: glitch 0.5s infinite;
+}
+
+@keyframes glitch {
+  0% { transform: translate(0); }
+  20% { transform: translate(-2px, 2px); }
+  40% { transform: translate(-2px, -2px); }
+  60% { transform: translate(2px, 2px); }
+  80% { transform: translate(2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+.retro-text-flicker {
+  animation: flicker 3s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; }
+  50% { opacity: 0.8; }
+  100% { opacity: 1; }
+}
+
+/* CRT scanlines */
+.crt::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(to bottom, rgba(0,0,0,0.1), transparent 2px);
+  pointer-events: none;
+}
+
+/* Apply to components */
+.dark .bg-white {
+  background-color: #222;
+}
+
+.dark .text-gray-800 {
+  color: #0f0;
+}
+
+.dark .text-gray-600 {
+  color: #0aa;
+}
+
+.dark .border-gray-200 {
+  border-color: #333;
+}
+
+/* More retro adjustments */
+input, select, textarea {
+  background-color: #000;
+  border: 1px dashed var(--secondary-color);
+  color: var(--text-color);
+  font-family: var(--font-mono);
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 2px solid var(--accent-color);
+}
+
+th, td {
+  border: 1px solid var(--secondary-color);
+  padding: 8px;
+}
+
+th {
+  background: linear-gradient(to bottom, #333, #111);
+  text-shadow: 0 0 5px var(--text-color);
+}
